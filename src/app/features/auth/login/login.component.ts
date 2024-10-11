@@ -21,6 +21,7 @@ export class LoginComponent {
 
     if( this.userObj.email == "ernesto.acostavelazquez@gmail.com" && this.userObj.password == "1234"){
       alert("login Success")    
+      localStorage.setItem('loginUser',this.userObj.email)
       this.router.navigateByUrl('Sidebar')
     }else {
       alert('Wrong Credentials')
