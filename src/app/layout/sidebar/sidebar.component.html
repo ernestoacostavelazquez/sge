@@ -26,9 +26,10 @@
           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700  "
               >
-                <span class="flex font-medium text-sm">
+             
+                <span class=" flex font-medium text-sm">
                   <img
                     src="assets/icons/leaderboard.svg"
                     class="mr-2"
@@ -37,6 +38,7 @@
                   />
                   <span class="self-center">Contabilidad</span>
                 </span>
+             
                 <span
                   class="shrink-0 transition duration-300 group-open:-rotate-180"
                 >
@@ -113,20 +115,101 @@
           </li>
 
           <li>
-            <a
-              href="#"
-              class="flex rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
-              <img
-                src="assets/icons/credit_score.svg"
-                class="mr-2"
-                title="Cartera Clientes"
-                alt="Cartera"
-              />
-              <span class="font-medium text-sm self-center"
-                >Cartera Clientes</span
+            
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
               >
-            </a>
+                <span class="flex font-medium text-sm">
+                  <img
+                    src="assets/icons/credit_score.svg"
+                    class="mr-2"
+                    title="Refacciones"
+                    alt="Refacciones"
+                  />
+                  <span class="self-center">Carteras</span>
+                </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <img src="assets/icons/stat_minus_1.svg" />
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <details
+                    class="group [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                      <span class="font-medium text-sm self-stretch px-4"
+                        >Catalogos</span
+                      >
+                      <span
+                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                      >
+                        <img src="assets/icons/stat_minus_1.svg" />
+                      </span>
+                    </summary>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Carteras</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Movimientos</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Tipos Pago</a
+                        >
+                      </li>
+                      
+                    </ul>
+                  </details>
+                </li>
+
+                <li>
+                  <a
+                    href="#" routerLink="add-pers" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Maestro Persona</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Estado Cuenta</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Reporte Antiguedad</a
+                  >
+                </li>
+               
+              </ul>
+            </details>
+
+                
+
           </li>
 
           <li>
@@ -186,7 +269,7 @@
                     <ul>
                       <li>
                         <a
-                          href="#"
+                          href="#" routerLink="add-lineas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
                           class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                           >Lineas</a
                         >
@@ -269,6 +352,20 @@
                 alt="Servicio"
               />
               <span class="self-center">Servicio</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="flex rounded-lg px-4 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <img
+                src="assets/icons/settings.svg"
+                class="mr-2"
+                title="Ventas"
+                alt="Ventas"
+              />
+              <span class="self-center">Configuración</span>
             </a>
           </li>
         </ul>

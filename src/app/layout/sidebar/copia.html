@@ -1,146 +1,275 @@
 <!-- Main -->
-<div class="flex h-screen bg-gray-100 ">
-
+<div class="flex h-screen bg-gray-100">
   <!-- Menu principal (boton desplegable, contabilidad, refacciones, servicio, etc)-->
   <div
     [ngClass]="open ? 'w-20' : 'w-73'"
-    class="h-screen p-5 pt-8 flex flex-col justify-between bg-white border-r overflow-y-auto rounded-2xl ">
+    class="h-screen p-5 pt-8 flex flex-col justify-between bg-white border-r overflow-y-auto rounded-2xl"
+  >
     <div class="text-gray-100 text-xl">
-      <div class="mt-1 flex items-center">    
-         <img src="assets/icons/grid_view.svg" class="bg-blue-600 px-2 py-2 cursor-pointer rounded-md " alt="" (click)="toggleMenu()" >
-          <h1 class="font-bold text-black text-[15px] ml-5">SGE</h1>
+      <div class="mt-1 flex items-center">
+        <img
+          src="assets/icons/grid_view.svg"
+          class="bg-blue-600 px-2 py-2 cursor-pointer rounded-md"
+          alt=""
+          (click)="toggleMenu()"
+        />
+        <h1 class="font-bold text-black text-[15px] ml-5">SGE</h1>
       </div>
       <hr class="my-2 text-gray-600" />
     </div>
-      
-  
+
     <aside
-      class="flex h-screen flex-col justify-between  w-72 bg-white border-r overflow-y-auto">
+      class="flex h-screen flex-col justify-between w-72 bg-white border-r overflow-y-auto"
+    >
       <div class="px-4">
         <ul class="mt-6 space-y-1">
           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
                 <span class="flex font-medium text-sm">
-                  <img src="assets/icons/leaderboard.svg" class="mr-3 " title="Contabilidad" alt="Contabilidad">
-                  <span class="self-center">Contabilidad</span>          
-                </span>                                
+                  <img
+                    src="assets/icons/leaderboard.svg"
+                    class="mr-2"
+                    title="Contabilidad"
+                    alt="Contabilidad"
+                  />
+                  <span class="self-center">Contabilidad</span>
+                </span>
                 <span
-                  class="shrink-0 transition duration-300 group-open:-rotate-180">
-                  <img src="assets/icons/stat_minus_1.svg" >
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <img src="assets/icons/stat_minus_1.svg" />
                 </span>
               </summary>
 
               <ul class="mt-2 space-y-1 px-4">
                 <li>
-                  <a
-                    routerLink="/cuentas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page" 
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Catalogos</a>
+                  <details
+                    class="group [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                      <span class="font-medium text-sm self-stretch px-4"
+                        >Catalogos</span
+                      >
+                      <span
+                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                      >
+                        <img src="assets/icons/stat_minus_1.svg" />
+                      </span>
+                    </summary>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Tipo Cuentas</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Periodos</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Catalogo Cuentas</a
+                        >
+                      </li>
+                    </ul>
+                  </details>
                 </li>
 
                 <li>
                   <a
                     href="#"
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Registro Poliza</a>
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Registro Poliza</a
+                  >
                 </li>
                 <li>
                   <a
                     href="#"
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Reportes</a>
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Reportes</a
+                  >
                 </li>
                 <li>
                   <a
                     href="#"
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Cierres</a>
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Cierres</a
+                  >
                 </li>
               </ul>
             </details>
           </li>
 
           <li>
-            <a href="#" class="flex rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-              <img src="assets/icons/credit_score.svg" class="mr-3" title="Cartera Clientes" alt="Cartera">
-              <span class="self-center">Cartera Clientes</span>              
+            <a
+              href="#"
+              class="flex rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <img
+                src="assets/icons/credit_score.svg"
+                class="mr-2"
+                title="Cartera Clientes"
+                alt="Cartera"
+              />
+              <span class="font-medium text-sm self-center"
+                >Cartera Clientes</span
+              >
             </a>
           </li>
 
           <li>
-            <a href="#"  class="flex rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-            <img src="assets/icons/trending_up.svg" class="mr-3" title="Ventas" alt="Ventas">
-            <span class="self-center">Ventas</span>          
+            <a
+              href="#"
+              class="flex rounded-lg px-4 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <img
+                src="assets/icons/trending_up.svg"
+                class="mr-2"
+                title="Ventas"
+                alt="Ventas"
+              />
+              <span class="self-center">Ventas</span>
             </a>
           </li>
 
           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">                              
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
                 <span class="flex font-medium text-sm">
-                  <img src="assets/icons/inventory.svg" class="mr-3 " title="Refacciones" alt="Refacciones">
-                  <span class="self-center">Refacciones</span>          
+                  <img
+                    src="assets/icons/inventory.svg"
+                    class="mr-2"
+                    title="Refacciones"
+                    alt="Refacciones"
+                  />
+                  <span class="self-center">Refacciones</span>
                 </span>
 
                 <span
-                  class="shrink-0 transition duration-300 group-open:-rotate-180">
-                  <img src="assets/icons/stat_minus_1.svg" >
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <img src="assets/icons/stat_minus_1.svg" />
                 </span>
               </summary>
 
               <ul class="mt-2 space-y-1 px-4">
                 <li>
-                  <a
-                    href="#" routerLink="/lineas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Catalogos</a>
+                  <details
+                    class="group [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                      <span class="font-medium text-sm self-stretch px-4"
+                        >Catalogos</span
+                      >
+                      <span
+                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                      >
+                        <img src="assets/icons/stat_minus_1.svg" />
+                      </span>
+                    </summary>
+                    <ul>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Lineas</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Unidad Medida</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Empaque</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Maestro Partes</a
+                        >
+                      </li>
+                    </ul>
+                  </details>
                 </li>
 
                 <li>
                   <a
-                    href="#"  
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Ordenes Compra</a>
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Ordenes Compra</a
+                  >
                 </li>
 
                 <li>
                   <a
-                    href="#"  
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Ventas</a>
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Ventas</a
+                  >
                 </li>
 
                 <li>
                   <a
-                    href="#"  
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Consultas</a>
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Consultas</a
+                  >
                 </li>
 
                 <li>
                   <a
-                    href="#"  
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Reportes</a>
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Reportes</a
+                  >
                 </li>
                 <li>
                   <a
-                    href="#"  
-                    class="block rounded-lg px-8 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Inventario Fisico</a>
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Inventario Fisico</a
+                  >
                 </li>
-
               </ul>
             </details>
           </li>
           <li>
-              <a href="#" class="flex rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                <img src="assets/icons/build.svg"  class="mr-3" title="Servicio" alt="Servicio">
-                <span class="self-center">Servicio</span>          
-                </a>
+            <a
+              href="#"
+              class="flex rounded-lg px-4 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <img
+                src="assets/icons/build.svg"
+                class="mr-3"
+                title="Servicio"
+                alt="Servicio"
+              />
+              <span class="self-center">Servicio</span>
+            </a>
           </li>
         </ul>
       </div>
@@ -168,10 +297,11 @@
     </aside>
   </div>
 
-
   <!-- Cabecero de la Pagina (busqueda,logout,notificaciones,configuración ) -->
-  <div class="flex flex-col flex-1 overflow-y-auto ">
-    <div class="flex items-center justify-between h-16 bg-white border-b border-grey-200">
+  <div class="flex flex-col flex-1 overflow-y-auto">
+    <div
+      class="flex items-center justify-between h-16 bg-white border-b border-grey-200"
+    >
       <div class="flex items-center px-4">
         <div class="relative mx-auto text-gray-600">
           <input
@@ -180,39 +310,53 @@
             name="search"
             placeholder="Search"
           />
-          <button type="submit" class="absolute right-1 top-0 mt-3 mr-4">  
-          
-          <img src="assets/icons/search.svg" class="text-gray-600 dark:text-gray-200 fill-current "  title="Busqueda" alt="Busqueda">                        
-          
+          <button type="submit" class="absolute right-1 top-0 mt-3 mr-4">
+            <img
+              src="assets/icons/search.svg"
+              class="text-gray-600 dark:text-gray-200 fill-current"
+              title="Busqueda"
+              alt="Busqueda"
+            />
           </button>
         </div>
       </div>
 
-      <!-- notification --> 
+      <!-- notification -->
       <div class="flex items-center space-x-4 mr-4">
         <!-- Notificación -->
-        <button class="text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300">
-          <img src="assets/icons/notifications_active.svg" title="Notificación" alt="Notificación">                        
+        <button
+          class="text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300"
+        >
+          <img
+            src="assets/icons/notifications_active.svg"
+            title="Notificación"
+            alt="Notificación"
+          />
         </button>
-        
+
         <!-- Configuración -->
-        <button class="text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300">
-          <img src="assets/icons/settings.svg" title="Configuración" alt="Configuración">                
+        <button
+          class="text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300"
+        >
+          <img
+            src="assets/icons/settings.svg"
+            title="Configuración"
+            alt="Configuración"
+          />
         </button>
-        
+
         <!-- Logout -->
-        <button (click)="logoff()" class="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300">
-          <img src="/assets/icons/logout.svg" title="Logout" alt="Logout">   
+        <button
+          (click)="logoff()"
+          class="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300"
+        >
+          <img src="/assets/icons/logout.svg" title="Logout" alt="Logout" />
           <span class="font-bold">Logout</span>
         </button>
       </div>
-    </div>  
+    </div>
     <div class="container flex-1 p-6 overflow-y-auto">
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
-
-
-
