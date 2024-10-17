@@ -12,6 +12,14 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 export class SidebarComponent {
 
   router = inject(Router);
+  loggedUserData :any;
+
+  constructor(){
+    const loggedData  = localStorage.getItem("loginUser");
+    if(loggedData != null){
+      this.loggedUserData = JSON.parse(loggedData);
+    }
+  }
 
   open:boolean = false;
 

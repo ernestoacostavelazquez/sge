@@ -103,23 +103,21 @@
                     >Reportes</a
                   >
                 </li>
+
                 <li>
-                  <a
-                    href="#"
+                  <a href="#" 
                     class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Cierres</a
-                  >
+                    >Cierres</a>
                 </li>
               </ul>
             </details>
           </li>
 
+          <!-- Incia Sección de Carteras-->
           <li>
-            
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-              >
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                 <span class="flex font-medium text-sm">
                   <img
                     src="assets/icons/credit_score.svg"
@@ -129,7 +127,6 @@
                   />
                   <span class="self-center">Carteras</span>
                 </span>
-
                 <span
                   class="shrink-0 transition duration-300 group-open:-rotate-180"
                 >
@@ -211,6 +208,7 @@
                 
 
           </li>
+          <!-- Termina Sección de Carteras-->
 
           <li>
             <a
@@ -267,6 +265,13 @@
                       </span>
                     </summary>
                     <ul>
+                      <li>
+                        <a
+                          href="#" routerLink="add-almacenes" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Almacenes</a
+                        >
+                      </li>
                       <li>
                         <a
                           href="#" routerLink="add-lineas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
@@ -354,20 +359,47 @@
               <span class="self-center">Servicio</span>
             </a>
           </li>
+
+          <!-- Incia Sección de Configuración-->
           <li>
-            <a
-              href="#"
-              class="flex rounded-lg px-4 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
+             <details class="group [&_summary::-webkit-details-marker]:hidden">
+          <summary
+            class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+            <span class="flex font-medium text-sm">
               <img
                 src="assets/icons/settings.svg"
                 class="mr-2"
-                title="Ventas"
-                alt="Ventas"
+                title="Configuración"
+                alt="Configuración"
               />
               <span class="self-center">Configuración</span>
-            </a>
-          </li>
+            </span>
+            <span
+              class="shrink-0 transition duration-300 group-open:-rotate-180"
+            >
+              <img src="assets/icons/stat_minus_1.svg" />
+            </span>
+          </summary>
+
+          <ul class="mt-2 space-y-1 px-4">
+            <li>
+              <a
+                href="#" routerLink="add-roles" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >Roles</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="#" routerLink="add-usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >Usuarios</a
+              >
+            </li>
+          </ul>
+        </details>   
+          </li>        
         </ul>
       </div>
 
@@ -384,9 +416,9 @@
 
           <div>
             <p class="text-xs">
-              <strong class="block font-medium">Eric Frusciante</strong>
+              <strong class="block font-medium">{{loggedUserData.nombre_completo}} </strong>
 
-              <span> eric&#64;frusciante.com </span>
+              <span>{{loggedUserData?.email}} </span>
             </p>
           </div>
         </a>
@@ -429,27 +461,19 @@
             title="Notificación"
             alt="Notificación"
           />
-        </button>
-
-        <!-- Configuración -->
-        <button
-          class="text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300"
-        >
-          <img
-            src="assets/icons/settings.svg"
-            title="Configuración"
-            alt="Configuración"
-          />
-        </button>
-
-        <!-- Logout -->
-        <button
-          (click)="logoff()"
-          class="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300"
-        >
-          <img src="/assets/icons/logout.svg" title="Logout" alt="Logout" />
-          <span class="font-bold">Logout</span>
-        </button>
+        </button>       
+     
+         <!-- Logout -->
+         <button
+           (click)="logoff()"
+           class="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-200 dark:hover:text-gray-300">
+           <img src="/assets/icons/logout.svg" title="Logout" alt="Logout" />
+           <span class="font-bold">Logout</span>
+         </button>
+     
+         
+       
+        
       </div>
     </div>
     <div class="container flex-1 p-6 overflow-y-auto">

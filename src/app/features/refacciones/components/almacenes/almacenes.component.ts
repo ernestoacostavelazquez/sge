@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-almacenes',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './almacenes.component.css'
 })
 export class AlmacenesComponent {
-
+ 
+  
 }

@@ -28,9 +28,13 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/datatables.net-buttons-dt/css\buttons.dataTables.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js"
+              
+            ]
           },
           "configurations": {
             "production": {

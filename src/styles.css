@@ -7,3 +7,22 @@
 body {
     font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto globalmente */
   }
+
+/* alert.component.css */
+.alert-popup {
+  max-width: 400px; /* Ajusta el ancho del contenedor */
+  padding: 5px; /* Reduce el padding para que ocupe menos espacio */
+  box-shadow: none; /* Elimina la sombra del contenedor */
+  border-radius: 8px; /* Mantiene los bordes redondeados */
+  margin: 0 auto; /* Centra el popup horizontalmente */
+}
+
+.alert-title {
+  font-size: 2rem; /* Ajusta el tamaño del título */
+}
+
+.alert-text {
+  font-size: 0.8rem; /* Ajusta el tamaño del texto para que ocupe menos espacio */
+}
+
+  
