@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+
+declare var $: any;  
 
 @Component({
   selector: 'app-unidad-medida',
   standalone: true,
-  imports: [],
   templateUrl: './unidad-medida.component.html',
-  styleUrl: './unidad-medida.component.css'
+  styleUrls: ['./unidad-medida.component.css']
 })
-export class UnidadMedidaComponent {
+export class UnidadMedidaComponent implements AfterViewInit   {
 
+  ngAfterViewInit(): void {
+    // Inicializar DataTables después de que la vista esté completamente renderizada
+    ($('#example') as any).DataTable({
+      "paging": true,  // Activa la paginación
+      "ordering": true, // Permite ordenar columnas
+      "info": true,     // Muestra información de la tabla
+      "searching": true // Activa la barra de búsqueda
+    });
+  }
+  
 }

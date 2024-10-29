@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    debugger;
     if (this.loginForm.valid) { // Verifica si el formulario es válido
       this.http.post("http://localhost:3000/api/users/login", this.loginForm.value).subscribe((res: any) => {
+        debugger;
         if (res.result) {
           this.alertService.success('Login Exitoso', '¡Bienvenido!');
           localStorage.setItem('loginUser', JSON.stringify(res.data));

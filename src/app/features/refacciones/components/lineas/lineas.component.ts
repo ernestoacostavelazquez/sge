@@ -5,6 +5,8 @@ import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { AlertService } from '../../../../shared/services/alert.service';
 
 
+
+
 @Component({
   selector: 'app-lineas',
   standalone: true,
@@ -14,7 +16,7 @@ import { AlertService } from '../../../../shared/services/alert.service';
 })
 
 
-export class LineasComponent implements OnInit {
+export class LineasComponent implements OnInit  {
 
   lineasArray: any[] = [];
   lineaForm: FormGroup;
@@ -38,8 +40,9 @@ export class LineasComponent implements OnInit {
     
   }
 
+
   initializeDataTable() {
-   
+    
   }
   
 
