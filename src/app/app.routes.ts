@@ -8,6 +8,7 @@ import { AlmacenesComponent } from './features/refacciones/components/almacenes/
 import { UsuariosComponent } from './features/security/components/usuarios/usuarios.component';
 import { RolesComponent } from './features/security/components/roles/roles.component';
 import { UnidadMedidaComponent } from './features/refacciones/components/unidad-medida/unidad-medida.component';
+import { PaisesComponent } from './features/security/components/paises/paises.component';
 
 export const routes: Routes = [
     
@@ -59,6 +60,12 @@ export const routes: Routes = [
         {
             path:'add-unidad-medida', 
             component: UnidadMedidaComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-paises', 
+            component: PaisesComponent,
             canActivate:[authGuard]
             //component: SidebarComponent  
         }

@@ -1,27 +1,22 @@
+import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '../../../../shared/services/alert.service';
 
-
-
-
 @Component({
-  selector: 'app-lineas',
+  selector: 'app-paises',
   standalone: true,
   imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './lineas.component.html',
-  styleUrl: './lineas.component.css'
+  templateUrl: './paises.component.html',
+  styleUrl: './paises.component.css'
 })
+export class PaisesComponent implements OnInit {
 
-
-export class LineasComponent implements OnInit  {
-
-  lineasArray: any[] = [];
-  lineaForm: FormGroup;
+  paisesArray: any[] = [];
+  paisForm: FormGroup;
   isEditMode = false; // Variable para controlar si estamos en modo de edición
-  selectedLineaId: number | null = null; // Variable para almacenar el ID de la linea seleccionado
+  selectedPaisId: number | null = null; // Variable para almacenar el ID de la linea seleccionado
 
 
   usuarioData: any = null;
@@ -29,22 +24,23 @@ export class LineasComponent implements OnInit  {
 
   constructor(private http: HttpClient, private alertService: AlertService) {
     // Añadir validadores al formulario
-    this.lineaForm = new FormGroup({
+    this.paisForm = new FormGroup({
       nombre: new FormControl("", [Validators.required]),
+      codigo_iso_alpha2: new FormControl("",[Validators.required,Validators.minLength(2)]),
       estatus: new FormControl(true)
     });
     this.getUserFromLocalStorage();
   }
 
   ngOnInit(): void {
-    this.getLineas();
+    this.getPaises();
   }
  
   
-  getLineas() {
-    this.http.get('http://localhost:3000/api/Lineas').subscribe((res: any) => {
+  getPaises() {
+    this.http.get('http://localhost:3000/api/Paises').subscribe((res: any) => {
       if (Array.isArray(res.data)) {
-        this.lineasArray = res.data;
+        this.paisesArray = res.data;
       } else {
         this.alertService.error("La respuesta no contiene un arreglo", res.mensaje);
       }
@@ -53,13 +49,15 @@ export class LineasComponent implements OnInit  {
 
   // Función para guardar un nuevo la linea
   onSave() {
-    const formValue = this.lineaForm.value;
+    debugger;
+    const formValue = this.paisForm.value;
     formValue.created_by = this.usuarioRol;
 
-    this.http.post('http://localhost:3000/api/Lineas', formValue).subscribe((res: any) => {
+    this.http.post('http://localhost:3000/api/Paises', formValue).subscribe((res: any) => {
+      debugger;
       if (res.result) {
         this.alertService.success('Registro Exitoso', '');
-        this.getLineas();
+        this.getPaises();
         this.resetForm(); // Resetear el formulario después de guardar
       } else {
         this.alertService.error('Ooops...', res.message);
@@ -68,13 +66,14 @@ export class LineasComponent implements OnInit  {
   }
 
   // Función para editar un rol
-  onEdit(linea: any) {
-    this.lineaForm.patchValue(linea);  // Usar patchValue para llenar los campos del formulario
+  onEdit(pais: any) {
+    debugger;
+    this.paisForm.patchValue(pais);  // Usar patchValue para llenar los campos del formulario
 
     // Comprobar si el liean tiene un campo 'id' o 'id_linea'
-    this.selectedLineaId = linea.id ? linea.id : linea.id_linea; // Ajustar según el nombre del campo
-    if (!this.selectedLineaId) {
-      this.alertService.error('No se encontró un ID válido para el rol seleccionado:', linea);
+    this.selectedPaisId = pais.id ? pais.id : pais.id_pais; // Ajustar según el nombre del campo
+    if (!this.selectedPaisId) {
+      this.alertService.error('No se encontró un ID válido para el rol seleccionado:', pais);
     }
     
     this.isEditMode = true; // Cambiar a modo de edición
@@ -82,14 +81,17 @@ export class LineasComponent implements OnInit  {
 
   // Función para actualizar una linea existente
   onUpdate() {
-    if (this.selectedLineaId) {
-      const formValue = this.lineaForm.value;
+    debugger;
+    if (this.selectedPaisId) {
+      const formValue = this.paisForm.value;
       formValue.updated_by = this.usuarioRol;
+      debugger;
 
-      this.http.put(`http://localhost:3000/api/Lineas/${this.selectedLineaId}`, formValue).subscribe((res: any) => {
+      this.http.put(`http://localhost:3000/api/Paises/${this.selectedPaisId}`, formValue).subscribe((res: any) => {
+        debugger;
         if (res.result) {
           this.alertService.success('Actualización Exitosa', '');
-          this.getLineas();
+          this.getPaises();
           this.resetForm(); // Resetear el formulario después de la actualización
           this.isEditMode = false;
         } else {
@@ -104,12 +106,13 @@ export class LineasComponent implements OnInit  {
 
   // Función para resetear el formulario y volver al modo de creación
   resetForm() {
-    this.lineaForm.reset({
+    this.paisForm.reset({
       nombre: "",
+      codigo_iso_alpha2:"",
       estatus: true
     });
     this.isEditMode = false;
-    this.selectedLineaId = null; // Limpiar la selección de linea
+    this.selectedPaisId = null; // Limpiar la selección de linea
   }
 
   // Obtener los datos de localStorage
@@ -127,10 +130,10 @@ export class LineasComponent implements OnInit  {
     this.alertService.confirm('¿Estás seguro?', 'No podrás revertir esta acción', 'Sí, eliminar', 'Cancelar')
     .then((result) => {
       if (result.isConfirmed) {
-        this.http.delete(`http://localhost:3000/api/Lineas/${id}`).subscribe((res: any) => {
+        this.http.delete(`http://localhost:3000/api/Paises/${id}`).subscribe((res: any) => {
           if (res.result) {
-            this.alertService.success('Rol Eliminado', '');
-            this.getLineas();
+            this.alertService.success('Pais Eliminado', '');
+            this.getPaises();
           } else {
             this.alertService.error('Ooops...', res.message);
           }
@@ -138,4 +141,5 @@ export class LineasComponent implements OnInit  {
       }
     });
   }
+
 }

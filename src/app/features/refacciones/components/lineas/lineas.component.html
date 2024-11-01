@@ -59,11 +59,10 @@
         <input type="text" formControlName="nombre" id="nombre" name="nombre" required
           class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
 
-          <div class="text-red-500">
-             @if (lineaForm.controls['nombre'].touched && lineaForm.controls['nombre'].errors?.['required']){
-                  <span>Dato Requerido</span>
-          }
+          <div class="text-red-500" *ngIf="lineaForm.controls['nombre'].touched && lineaForm.controls['nombre'].invalid">
+            <span>Dato Requerido</span>
           </div>
+
       </div> 
      
       <div>
@@ -78,10 +77,25 @@
           Reset
           </button>
 
+          
           <!-- Botón de Registrar o Actualizar según el modo -->
-          <button *ngIf="!isEditMode" type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5" (click)="onSave()">
-              Registrar
-          </button>
+          <button 
+          *ngIf="!isEditMode" 
+          type="button" 
+          [disabled]="lineaForm.invalid"
+          [ngClass]="{
+            'bg-blue-300 cursor-not-allowed': lineaForm.invalid, 
+            'bg-blue-700 hover:bg-blue-800 cursor-pointer': !lineaForm.invalid
+          }"
+          class="text-white font-medium rounded-lg text-sm px-5 py-2.5"
+          (click)="onSave()"
+        >
+          Registrar
+        </button>
+        
+         
+
+          
           <button *ngIf="isEditMode" type="button" class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5" (click)="onUpdate()">
               Actualizar
           </button>
