@@ -9,6 +9,15 @@ import { UsuariosComponent } from './features/security/components/usuarios/usuar
 import { RolesComponent } from './features/security/components/roles/roles.component';
 import { UnidadMedidaComponent } from './features/refacciones/components/unidad-medida/unidad-medida.component';
 import { PaisesComponent } from './features/security/components/paises/paises.component';
+import { GenerosComponent } from './features/carteras/components/generos/generos.component';
+import { EstadoCivilComponent } from './features/carteras/components/estado-civil/estado-civil.component';
+import { CategoriasComponent } from './features/refacciones/components/categorias/categorias.component';
+import { EmpaqueComponent } from './features/refacciones/components/empaque/empaque.component';
+import { TiposDomicilioComponent } from './features/carteras/components/tipos-domicilio/tipos-domicilio.component';
+import { TiposPolizaComponent } from './features/contabilidad/components/tipos-poliza/tipos-poliza.component';
+import { TiposPersonaComponent } from './features/carteras/components/tipos-persona/tipos-persona.component';
+import { GenerosCuentasComponent } from './features/contabilidad/components/generos-cuentas/generos-cuentas.component';
+import { GruposCuentasComponent } from './features/contabilidad/components/grupos-cuentas/grupos-cuentas.component';
 
 export const routes: Routes = [
     
@@ -66,6 +75,60 @@ export const routes: Routes = [
         {
             path:'add-paises', 
             component: PaisesComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-generos', 
+            component:GenerosComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-estadoCivil', 
+            component: EstadoCivilComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-categorias', 
+            component: CategoriasComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-empaque', 
+            component: EmpaqueComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-tiposDomicilio', 
+            component: TiposDomicilioComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-tiposPoliza', 
+            component: TiposPolizaComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-tiposPersona', 
+            component: TiposPersonaComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-generosCuenta', 
+            component: GenerosCuentasComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-gruposCuenta', 
+            component: GruposCuentasComponent,
             canActivate:[authGuard]
             //component: SidebarComponent  
         }
