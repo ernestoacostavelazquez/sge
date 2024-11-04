@@ -1,45 +1,44 @@
 import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-generos-cuentas',
+  selector: 'app-estado-civil',
   standalone: true,
   imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './generos-cuentas.component.html',
-  styleUrl: './generos-cuentas.component.css'
+  templateUrl: './estado-civil.component.html',
+  styleUrl: './estado-civil.component.css'
 })
-export class GenerosCuentasComponent {
-
-  generosCuentasArray: any[] = [];
-  generoCuentaForm: FormGroup;
+export class EstadoCivilComponent implements OnInit{
+ 
+  estadosCivilArray: any[] = [];
+  estadoCivilForm: FormGroup;
   isEditMode = false; // Variable para controlar si estamos en modo de edición
-  selectedGeneroCuentaId: number | null = null; // Variable para almacenar el ID de la linea seleccionado
+  selectedEstadosCivilId: number | null = null; // Variable para almacenar el ID de la linea seleccionado
 
 
   usuarioData: any = null;
   usuarioRol: string = '';
   constructor(private http: HttpClient, private alertService: AlertService) {
     // Añadir validadores al formulario
-    this.generoCuentaForm = new FormGroup({
-      nombre_genero: new FormControl("", [Validators.required]),
-      codigo_genero: new FormControl(0, [Validators.required, Validators.pattern("^[0-9]+$")]), // Validador para números enteros
+    this.estadoCivilForm = new FormGroup({
+      nombre_estado: new FormControl("", [Validators.required]),
       estatus: new FormControl(true)
     });
     this.getUserFromLocalStorage();
   }
 
   ngOnInit(): void {
-    this.getGenerosCuenta();
+    this.getEstadosCivil();
   }
  
   
-  getGenerosCuenta() {
-    this.http.get('http://localhost:3000/api/GenerosCuentasContables').subscribe((res: any) => {
+  getEstadosCivil() {
+    this.http.get('http://localhost:3000/api/EstadosCivil').subscribe((res: any) => {
       if (Array.isArray(res.data)) {
-        this.generosCuentasArray = res.data;
+        this.estadosCivilArray = res.data;
       } else {
         this.alertService.error("La respuesta no contiene un arreglo", res.mensaje);
       }
@@ -48,13 +47,13 @@ export class GenerosCuentasComponent {
 
   // Función para guardar un nuevo la linea
   onSave() {
-    const formValue = this.generoCuentaForm.value;
+    const formValue = this.estadoCivilForm.value;
     formValue.created_by = this.usuarioRol;
 
-    this.http.post('http://localhost:3000/api/GenerosCuentasContables', formValue).subscribe((res: any) => {
+    this.http.post('http://localhost:3000/api/EstadosCivil', formValue).subscribe((res: any) => {
       if (res.result) {
         this.alertService.success('Registro Exitoso', '');
-        this.getGenerosCuenta();
+        this.getEstadosCivil();
         this.resetForm(); // Resetear el formulario después de guardar
       } else {
         this.alertService.error('Ooops...', res.message);
@@ -63,13 +62,13 @@ export class GenerosCuentasComponent {
   }
 
   // Función para editar un rol
-  onEdit(generoCuenta: any) {
-    this.generoCuentaForm.patchValue(generoCuenta);  // Usar patchValue para llenar los campos del formulario
+  onEdit(estadoCivil: any) {
+    this.estadoCivilForm.patchValue(estadoCivil);  // Usar patchValue para llenar los campos del formulario
 
     // Comprobar si el liean tiene un campo 'id' o 'id_linea'
-    this.selectedGeneroCuentaId = generoCuenta.id ? generoCuenta.id : generoCuenta.id_genero_cuenta; // Ajustar según el nombre del campo
-    if (!this.selectedGeneroCuentaId) {
-      this.alertService.error('No se encontró un ID válido para el genero de cuenta seleccionada:',generoCuenta);
+    this.selectedEstadosCivilId = estadoCivil.id ? estadoCivil.id : estadoCivil.id_estado_civil; // Ajustar según el nombre del campo
+    if (!this.selectedEstadosCivilId) {
+      this.alertService.error('No se encontró un ID válido para el Estado Civil seleccionado:', estadoCivil);
     }
     
     this.isEditMode = true; // Cambiar a modo de edición
@@ -77,14 +76,14 @@ export class GenerosCuentasComponent {
 
   // Función para actualizar una linea existente
   onUpdate() {
-    if (this.selectedGeneroCuentaId) {
-      const formValue = this.generoCuentaForm.value;
+    if (this.selectedEstadosCivilId) {
+      const formValue = this.estadoCivilForm.value;
       formValue.updated_by = this.usuarioRol;
 
-      this.http.put(`http://localhost:3000/api/GenerosCuentasContables/${this.selectedGeneroCuentaId}`, formValue).subscribe((res: any) => {
+      this.http.put(`http://localhost:3000/api/EstadosCivil/${this.selectedEstadosCivilId}`, formValue).subscribe((res: any) => {
         if (res.result) {
           this.alertService.success('Actualización Exitosa', '');
-          this.getGenerosCuenta();
+          this.getEstadosCivil();
           this.resetForm(); // Resetear el formulario después de la actualización
           this.isEditMode = false;
         } else {
@@ -93,19 +92,18 @@ export class GenerosCuentasComponent {
       });
     } else {
       // Mostrar mensaje de error si no se ha seleccionado un rol para actualizar
-      console.error("No se ha seleccionado ninguna linea para actualizar.");
+      console.error("No se ha seleccionado ningun Estado Civil para actualizar.");
     }
   }
 
   // Función para resetear el formulario y volver al modo de creación
   resetForm() {
-    this.generoCuentaForm.reset({
-      nombre_genero: "",
-      codigo_genero:0,
+    this.estadoCivilForm.reset({
+      nombre_estado: "",
       estatus: true
     });
     this.isEditMode = false;
-    this.selectedGeneroCuentaId = null; // Limpiar la selección de linea
+    this.selectedEstadosCivilId = null; // Limpiar la selección de linea
   }
 
   // Obtener los datos de localStorage
@@ -123,10 +121,10 @@ export class GenerosCuentasComponent {
     this.alertService.confirm('¿Estás seguro?', 'No podrás revertir esta acción', 'Sí, eliminar', 'Cancelar')
     .then((result) => {
       if (result.isConfirmed) {
-        this.http.delete(`http://localhost:3000/api/GenerosCuentasContables/${id}`).subscribe((res: any) => {
+        this.http.delete(`http://localhost:3000/api/EstadosCivil/${id}`).subscribe((res: any) => {
           if (res.result) {
-            this.alertService.success('Genero de Cuenta Eliminada', '');
-            this.getGenerosCuenta();
+            this.alertService.success('Estado Civil Eliminado', '');
+            this.getEstadosCivil();
           } else {
             this.alertService.error('Ooops...', res.message);
           }

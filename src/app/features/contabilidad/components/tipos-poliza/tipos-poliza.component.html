@@ -2,7 +2,7 @@
     <!-- Contenido de la columna más grande -->
     <div class="col-span-12 md:col-span-8 "> 
       <section class=" bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4">Tabla de Generos de Cuentas Contables</h2>
+        <h2 class="text-2xl font-semibold mb-4">Tabla de Tipo de Póliza</h2>
   
        
   
@@ -10,20 +10,20 @@
           <thead>
             <tr> 
                 <th class="py-2 px-4  bg-gray-300 text-left">#</th>
-                <th class="py-2 px-4  bg-gray-300 text-left">Genero</th>
-                <th class="py-2 px-4  bg-gray-300 text-left">Codigo</th>
+                <th class="py-2 px-4  bg-gray-300 text-left">Tipo</th>
+                <th class="py-2 px-4  bg-gray-300 text-left">Abreviatura</th>
                 <th class="py-2 px-4  bg-gray-300 text-left">Estatus</th>
                 <th class="py-2 px-4  bg-gray-300 text-center">Acciones</th>              
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let  generoCuenta of generosCuentasArray; let i = index">
+            <tr *ngFor="let tipoPoliza of tiposPolizaArray; let i = index">
                 <td class="py-2 px-4 border-b border-gray-300">{{i +  1}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{generoCuenta.nombre_genero}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{generoCuenta.codigo_genero}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{generoCuenta.estatus ? 'Activo' : 'Inactivo'}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{tipoPoliza.nombre_tipo_poliza}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{tipoPoliza.abreviatura}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{tipoPoliza.estatus ? 'Activo' : 'Inactivo'}}</td>
                 <td class="py-2 px-4 border-b border-gray-300 text-center"> 
-                <button class="mr-4 " title="Editar" (click)="onEdit(generoCuenta)">
+                <button class="mr-4 " title="Editar" (click)="onEdit(tipoPoliza)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                     viewBox="0 0 348.882 348.882">
                     <path
@@ -34,7 +34,7 @@
                       data-original="#000000" />
                   </svg>
                 </button>
-                <button class="mr-4" title="Eliminar" (click)="onDelete(generoCuenta.id_genero_cuenta || generoCuenta.id)">
+                <button class="mr-4" title="Eliminar" (click)="onDelete(tipoPoliza.id_tipo_poliza || tipoPoliza.id)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                     <path
                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -54,33 +54,47 @@
     <!-- Contenido de la columna más pequeña -->
     <div class="col-span-12 md:col-span-4 ">
       <section class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Genero</h2>
-      <form id="registro-form" class="space-y-4" [formGroup]="generoCuentaForm">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Tipos Poliza</h2>
+      <form id="registro-form" class="space-y-4" [formGroup]="tipoPolizaForm">
         <div>
-          <label for="nombre_genero" class="block text-gray-700">Genero Cuenta</label>
-          <input type="text" formControlName="nombre_genero" id="nombre_genero" name="nombre_genero" required
+          <label for="nombre_tipo_poliza" class="block text-gray-700">Tipo Poliza</label>
+          <input type="text" formControlName="nombre_tipo_poliza" id="nombre_tipo_poliza" name="nombre_tipo_poliza" required
             class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
   
-            <div class="text-red-500" *ngIf="generoCuentaForm.controls['nombre_genero'].touched && generoCuentaForm.controls['nombre_genero'].invalid">
+            <div class="text-red-500" *ngIf="tipoPolizaForm.controls['nombre_tipo_poliza'].touched && tipoPolizaForm.controls['nombre_tipo_poliza'].invalid">
               <span>Dato Requerido</span>
             </div>
   
         </div> 
         <div>
-            <label for="codigo_genero" class="block text-gray-700">Codigo Genero</label>
-            <input type="number" formControlName="codigo_genero" id="codigo_genero" name="codigo_genero" required
-              class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
-    
-              <div class="text-red-500" *ngIf="generoCuentaForm.controls['codigo_genero'].touched && generoCuentaForm.controls['codigo_genero'].invalid">
-                <span>Dato Requerido</span>
-              </div>
-    
-          </div> 
+          <label for="abreviatura" class="block text-gray-700">Abreviatura</label>
+          <input type="text" formControlName="abreviatura" id="abreviatura" name="abreviatura" required
+            class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
+  
+            <div class="text-red-500" *ngIf="tipoPolizaForm.controls['abreviatura'].touched && tipoPolizaForm.controls['abreviatura'].invalid">
+              <span>Dato Requerido</span>
+            </div>
+        </div> 
+        <div>
+          <label for="descripcion" class="block text-gray-700">Descripcion</label>
+          <textarea
+            formControlName="descripcion"
+            id="descripcion"
+            name="descripcion"
+            required
+            rows="3"
+            class="w-full rounded-md border border-gray-300 bg-white p-2 text-base font-medium text-gray-600 outline-none resize-y focus:border-blue-500 focus:shadow-md"
+          ></textarea>
+        
+          <div class="text-red-500" *ngIf="tipoPolizaForm.controls['descripcion'].touched && tipoPolizaForm.controls['descripcion'].invalid">
+            <span>Dato Requerido</span>
+          </div>
+        </div>
        
         <div>
             <label for="estatus" class="block text-gray-700">Estatus</label>
             <input type="checkbox" formControlName="estatus" id="estatus" name="estatus" class="mr-3">
-            <span>{{ generoCuentaForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
+            <span>{{ tipoPolizaForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
         </div>
      
         <div class="text-center ">
@@ -94,10 +108,10 @@
             <button 
             *ngIf="!isEditMode" 
             type="button" 
-            [disabled]="generoCuentaForm.invalid"
+            [disabled]="tipoPolizaForm.invalid"
             [ngClass]="{
-              'bg-blue-300 cursor-not-allowed': generoCuentaForm.invalid, 
-              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !generoCuentaForm.invalid
+              'bg-blue-300 cursor-not-allowed': tipoPolizaForm.invalid, 
+              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !tipoPolizaForm.invalid
             }"
             class="text-white font-medium rounded-lg text-sm px-5 py-2.5"
             (click)="onSave()"

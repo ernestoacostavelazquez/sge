@@ -26,7 +26,6 @@ export class LineasComponent implements OnInit  {
 
   usuarioData: any = null;
   usuarioRol: string = '';
-
   constructor(private http: HttpClient, private alertService: AlertService) {
     // Añadir validadores al formulario
     this.lineaForm = new FormGroup({
@@ -74,7 +73,7 @@ export class LineasComponent implements OnInit  {
     // Comprobar si el liean tiene un campo 'id' o 'id_linea'
     this.selectedLineaId = linea.id ? linea.id : linea.id_linea; // Ajustar según el nombre del campo
     if (!this.selectedLineaId) {
-      this.alertService.error('No se encontró un ID válido para el rol seleccionado:', linea);
+      this.alertService.error('No se encontró un ID válido para la linea seleccionada:', linea);
     }
     
     this.isEditMode = true; // Cambiar a modo de edición
@@ -129,7 +128,7 @@ export class LineasComponent implements OnInit  {
       if (result.isConfirmed) {
         this.http.delete(`http://localhost:3000/api/Lineas/${id}`).subscribe((res: any) => {
           if (res.result) {
-            this.alertService.success('Rol Eliminado', '');
+            this.alertService.success('Linea Eliminada', '');
             this.getLineas();
           } else {
             this.alertService.error('Ooops...', res.message);
