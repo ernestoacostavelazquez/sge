@@ -18,6 +18,9 @@ import { TiposPolizaComponent } from './features/contabilidad/components/tipos-p
 import { TiposPersonaComponent } from './features/carteras/components/tipos-persona/tipos-persona.component';
 import { GenerosCuentasComponent } from './features/contabilidad/components/generos-cuentas/generos-cuentas.component';
 import { GruposCuentasComponent } from './features/contabilidad/components/grupos-cuentas/grupos-cuentas.component';
+import { PeriodosContablesComponent } from './features/contabilidad/components/periodos-contables/periodos-contables.component';
+import { CatalogoCuentasComponent } from './features/contabilidad/components/catalogo-cuentas/catalogo-cuentas.component';
+import { PolizaContableComponent } from './features/contabilidad/components/poliza-contable/poliza-contable.component';
 
 export const routes: Routes = [
     
@@ -129,6 +132,24 @@ export const routes: Routes = [
         {
             path:'add-gruposCuenta', 
             component: GruposCuentasComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-periodosContables', 
+            component: PeriodosContablesComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-catalogoCuentas', 
+            component: CatalogoCuentasComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-polizaContable', 
+            component: PolizaContableComponent,
             canActivate:[authGuard]
             //component: SidebarComponent  
         }

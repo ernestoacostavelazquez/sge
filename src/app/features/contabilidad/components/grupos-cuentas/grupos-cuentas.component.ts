@@ -81,10 +81,12 @@ export class GruposCuentasComponent {
   onEdit(grupoGenero: any) {
     this.grupoGeneroForm.patchValue({
       nombre_grupo: grupoGenero.nombre_grupo,
-      id_genero_cuenta: grupoGenero.genero?.id_genero_cuenta || 0,  // Set el id del género correspondiente
+      id_genero_cuenta:  grupoGenero.genero?.id_genero_cuenta || 0,  // Set el id del género correspondiente
       codigo_grupo: grupoGenero.codigo_grupo,
       estatus: grupoGenero.estatus,
     });  // Usar patchValue para llenar los campos del formulario
+    
+    
 
     // Comprobar si el liean tiene un campo 'id' o 'id_linea'
     this.selectedGrupoGeneroId = grupoGenero.id ? grupoGenero.id : grupoGenero.id_grupo_genero; // Ajustar según el nombre del campo
