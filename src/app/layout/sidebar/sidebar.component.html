@@ -1,3 +1,4 @@
+<!-- sidebar.component.html-->
 <!-- Main -->
 <div class="flex h-screen bg-gray-100">
   <!-- Menu principal (boton desplegable, contabilidad, refacciones, servicio, etc)-->
@@ -23,10 +24,12 @@
     >
       <div class="px-4">
         <ul class="mt-6 space-y-1">
+          <!-- Inicia sección de Contabilidad-->
           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700  "
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                (click)="toggleSubmenu('contabilidad')"
               >
              
                 <span class=" flex font-medium text-sm">
@@ -40,7 +43,8 @@
                 </span>
              
                 <span
-                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                  class="shrink-0 transition duration-300"
+                  [ngClass]="{ '-rotate-180': submenus['contabilidad'] }"
                 >
                   <img src="assets/icons/stat_minus_1.svg" />
                 </span>
@@ -53,12 +57,14 @@
                   >
                     <summary
                       class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      (click)="toggleSubmenu('catalogos')"
                     >
                       <span class="font-medium text-sm self-stretch px-4"
                         >Catalogos</span
                       >
                       <span
-                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                        class="shrink-0 transition duration-300"
+                        [ngClass]="{ '-rotate-180': submenus['catalogos'] }"
                       >
                         <img src="assets/icons/stat_minus_1.svg" />
                       </span>
@@ -126,12 +132,16 @@
               </ul>
             </details>
           </li>
+          <!-- Termina Sección de Contabilidad-->
 
           <!-- Incia Sección de Carteras-->
           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
-                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                (click)="toggleSubmenu('cartera')"
+                >
+                
                 <span class="flex font-medium text-sm">
                   <img
                     src="assets/icons/credit_score.svg"
@@ -142,7 +152,8 @@
                   <span class="self-center">Carteras</span>
                 </span>
                 <span
-                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                  class="shrink-0 transition duration-300"
+                  [ngClass]="{ '-rotate-180': submenus['cartera'] }"
                 >
                   <img src="assets/icons/stat_minus_1.svg" />
                 </span>
@@ -155,12 +166,14 @@
                   >
                     <summary
                       class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      (click)="toggleSubmenu('catalogosCarteras')"
                     >
                       <span class="font-medium text-sm self-stretch px-4"
                         >Catalogos</span
                       >
                       <span
-                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                        class="shrink-0 transition duration-300"
+                        [ngClass]="{ '-rotate-180': submenus['catalogosCarteras'] }"    
                       >
                         <img src="assets/icons/stat_minus_1.svg" />
                       </span>
@@ -168,11 +181,19 @@
                     <ul>
                       <li>
                         <a
-                          href="#"
+                          href="#" routerLink="add-tiposCarteras" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Tipos de Carteras</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#" routerLink="add-carteras" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
                           class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                           >Carteras</a
                         >
                       </li>
+
                       <li>
                         <a
                           href="#"
@@ -251,38 +272,29 @@
           </li>
           <!-- Termina Sección de Carteras-->
 
-          <li>
-            <a
-              href="#"
-              class="flex rounded-lg px-4 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-            >
-              <img
-                src="assets/icons/trending_up.svg"
-                class="mr-2"
-                title="Ventas"
-                alt="Ventas"
-              />
-              <span class="self-center">Ventas</span>
-            </a>
-          </li>
-
-          <li>
+           <!-- Incia Sección de Tesorería-->
+           <li>
             <details class="group [&_summary::-webkit-details-marker]:hidden">
               <summary
                 class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-              >
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                (click)="toggleSubmenu('tesoreria')"
+
+                >
+
                 <span class="flex font-medium text-sm">
                   <img
-                    src="assets/icons/inventory.svg"
+                    src="assets/icons/bank.svg"
                     class="mr-2"
                     title="Refacciones"
                     alt="Refacciones"
                   />
-                  <span class="self-center">Refacciones</span>
+                  <span class="self-center">Tesorería</span>
                 </span>
-
                 <span
-                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                  class="shrink-0 transition duration-300"
+                  [ngClass]="{ '-rotate-180': submenus['tesoreria'] }"
+
                 >
                   <img src="assets/icons/stat_minus_1.svg" />
                 </span>
@@ -295,12 +307,250 @@
                   >
                     <summary
                       class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      (click)="toggleSubmenu('catalogosTesoreria')"
                     >
                       <span class="font-medium text-sm self-stretch px-4"
                         >Catalogos</span
                       >
                       <span
-                        class="shrink-0 transition duration-300 group-open:-rotate-180"
+                        class="shrink-0 transition duration-300"
+                        [ngClass]="{ '-rotate-180': submenus['catalogosTesoreria'] }"
+                      >
+                        <img src="assets/icons/stat_minus_1.svg" />
+                      </span>
+                    </summary>
+                    <ul>
+                      <li>
+                        <a
+                          href="#" routerLink="add-bancos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Bancos</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#" routerLink="add-tiposCajas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Tip de Cajas</a
+                        >
+                      </li>                    
+                      
+                    </ul>
+                  </details>
+                </li>
+
+                <li>
+                  <a
+                    href="#" routerLink="add-pers" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Cheques</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Corte de Carja</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Arqueo de Caja</a
+                  >
+                </li>
+               
+              </ul>
+            </details>
+
+                
+
+          </li>
+          <!-- Termina Sección de Tesorería-->
+
+          
+           <!-- Incia Sección de Vehículos-->
+           <li>
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                (click)="toggleSubmenu('vehiculos')"
+                >
+                <span class="flex font-medium text-sm">                  
+                  <img
+                    src="assets/icons/car-front.svg"
+                    class="mr-2"
+                    title="Ventas"
+                    alt="Ventas"
+                  />
+                  <span class="self-center">Vehiculos</span>
+                </span>
+                <span
+                  class="shrink-0 transition duration-300"
+                  [ngClass]="{ '-rotate-180': submenus['vehiculos'] }"
+                >
+                  <img src="assets/icons/stat_minus_1.svg" />
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <details
+                    class="group [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      (click)="toggleSubmenu('catalogosVehiculos')"
+                       
+                    >
+                      <span class="font-medium text-sm self-stretch px-4"
+                        >Catalogos</span
+                      >
+                      <span
+                        class="shrink-0 transition duration-300"
+                        [ngClass]="{ '-rotate-180': submenus['catalogosVehiculos'] }"
+                      >
+                        <img src="assets/icons/stat_minus_1.svg" />
+                      </span>
+                    </summary>
+                    <ul>
+                      <li>
+                        <a
+                        routerLink="add-armadoras" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Armadoras</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                        routerLink="add-marcas" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Marcas</a
+                        >
+                      </li>        
+                      <li>
+                        <a
+                        routerLink="add-modelos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Modelos</a
+                        >
+                      </li>       
+                      <li>
+                        <a
+                        routerLink="add-versiones" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Versiones</a
+                        >
+                      </li>         
+                      <li>
+                        <a
+                        routerLink="add-colores" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Colores</a
+                        >
+                      </li>       
+                      <li>
+                        <a
+                        routerLink="add-coloresExternos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Colores Externos</a
+                        >
+                      </li>                
+                      <li>
+                        <a
+                        routerLink="add-coloresInternos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Colores Internos</a
+                        >
+                      </li>      
+                      <li>
+                        <a
+                          href="#" routerLink="add-combustibles" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Combustibles</a
+                        >
+                      </li>             
+                      
+                    </ul>
+                  </details>
+                </li>
+
+                <li>
+                  <a
+                    href="#" routerLink="add-pers" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Pedidos</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Facturación</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >Consulta Inventarios</a
+                  >
+                </li>
+               
+              </ul>
+            </details>
+
+                
+
+          </li>
+          <!-- Termina Sección de VehículosTesorería-->
+
+          <!-- Inicia Sección de Inventarios-->
+          <li>
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                (click)="toggleSubmenu('inventarios')"
+
+              >
+                <span class="flex font-medium text-sm">
+                  <img
+                    src="assets/icons/inventory.svg"
+                    class="mr-2"
+                    title="Refacciones"
+                    alt="Refacciones"
+                  />
+                  <span class="self-center">Inventarios</span>
+                </span>
+
+                <span
+                  class="shrink-0 transition duration-300"
+                  [ngClass]="{ '-rotate-180': submenus['inventarios'] }"
+                >
+                  <img src="assets/icons/stat_minus_1.svg" />
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <details
+                    class="group [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary
+                      class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      (click)="toggleSubmenu('catalogosInventarios')"
+                    >
+                      <span class="font-medium text-sm self-stretch px-4"
+                        >Catalogos</span
+                      >
+                      <span
+                        class="shrink-0 transition duration-300"
+                        [ngClass]="{ '-rotate-180': submenus['catalogosInventarios'] }"
                       >
                         <img src="assets/icons/stat_minus_1.svg" />
                       </span>
@@ -329,9 +579,9 @@
                       </li>
                       <li>
                         <a
-                          href="#" routerLink="add-empaque" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          href="#" routerLink="add-unidadesEmpaque" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
                           class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                          >Empaque</a
+                          >Unidad Empaque</a
                         >
                       </li>
                       <li>
@@ -339,6 +589,20 @@
                           href="#" routerLink="add-categorias" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
                           class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                           >Categorías</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#" routerLink="add-subCategorias" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Sub - Categorías</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#" routerLink="add-canalesVenta" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentwhenActive="page"
+                          class="block rounded-lg px-12 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >Canales de Venta</a
                         >
                       </li>
                       <li>
@@ -364,7 +628,7 @@
                   <a
                     href="#"
                     class="block rounded-lg px-8 py-2 font-medium text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-                    >Ventas</a
+                    >Facturación</a
                   >
                 </li>
 
@@ -393,6 +657,9 @@
               </ul>
             </details>
           </li>
+          <!-- Termina Sección de Inventarios-->
+
+          <!-- Inicia Sección de Servicio -->
           <li>
             <a
               href="#"
@@ -407,6 +674,8 @@
               <span class="self-center">Servicio</span>
             </a>
           </li>
+          <!-- Termina Sección de Servicio -->
+          
 
           <!-- Incia Sección de Configuración-->
           <li>
@@ -454,7 +723,8 @@
             </li>
           </ul>
         </details>   
-          </li>        
+          </li>   
+
         </ul>
       </div>
 

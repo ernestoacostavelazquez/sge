@@ -24,8 +24,8 @@ export class CategoriasComponent implements OnInit{
   constructor(private http: HttpClient, private alertService: AlertService) {
     // Añadir validadores al formulario
     this.categoriaForm = new FormGroup({
-      nombre: new FormControl("", [Validators.required]),
-      descripcion: new FormControl(""),
+      nombre_categoria: new FormControl("", [Validators.required]),
+      descripcion_categoria: new FormControl(""),
       estatus: new FormControl(true)
     });
     this.getUserFromLocalStorage();
@@ -100,8 +100,8 @@ export class CategoriasComponent implements OnInit{
   // Función para resetear el formulario y volver al modo de creación
   resetForm() {
     this.categoriaForm.reset({
-      nombre: "",
-      descripcion:"",
+      nombre_categoria: "",
+      descripcion_categoria:"",
       estatus: true
     });
     this.isEditMode = false;

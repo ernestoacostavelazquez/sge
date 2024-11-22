@@ -2,7 +2,7 @@
     <!-- Contenido de la columna más grande -->
     <div class="col-span-12 md:col-span-8 "> 
       <section class=" bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4">Tabla de Categorias</h2>
+        <h2 class="text-2xl font-semibold mb-4">Tabla de Unidades de Empaque</h2>
   
        
   
@@ -10,18 +10,20 @@
           <thead>
             <tr> 
                 <th class="py-2 px-4  bg-gray-300 text-left">#</th>
-                <th class="py-2 px-4  bg-gray-300 text-left">Categoria</th>
+                <th class="py-2 px-4  bg-gray-300 text-left">Unidad</th>
+                <th class="py-2 px-4  bg-gray-300 text-left">Descripción</th>
                 <th class="py-2 px-4  bg-gray-300 text-left">Estatus</th>
                 <th class="py-2 px-4  bg-gray-300 text-center">Acciones</th>              
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let categoria of categoriasArray; let i = index">
+            <tr *ngFor="let unidadEmpaque of unidadesEmpaqueArray; let i = index">
                 <td class="py-2 px-4 border-b border-gray-300">{{i +  1}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{categoria.nombre_categoria}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{categoria.estatus ? 'Activo' : 'Inactivo'}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{unidadEmpaque.nombre_empaque}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{unidadEmpaque.descripcion_empaque}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{unidadEmpaque.estatus ? 'Activo' : 'Inactivo'}}</td>
                 <td class="py-2 px-4 border-b border-gray-300 text-center"> 
-                <button class="mr-4 " title="Editar" (click)="onEdit(categoria)">
+                <button class="mr-4 " title="Editar" (click)="onEdit(unidadEmpaque)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                     viewBox="0 0 348.882 348.882">
                     <path
@@ -32,7 +34,7 @@
                       data-original="#000000" />
                   </svg>
                 </button>
-                <button class="mr-4" title="Eliminar" (click)="onDelete(categoria.id_categoria || categoria.id)">
+                <button class="mr-4" title="Eliminar" (click)="onDelete(unidadEmpaque.id_empaque || unidadEmpaque.id)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                     <path
                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -52,39 +54,37 @@
     <!-- Contenido de la columna más pequeña -->
     <div class="col-span-12 md:col-span-4 ">
       <section class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Categorias</h2>
-      <form id="registro-form" class="space-y-4" [formGroup]="categoriaForm">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Unidad Empaque</h2>
+      <form id="registro-form" class="space-y-4" [formGroup]="unidadEmpaqueForm">
         <div>
-          <label for="nombre_categoria" class="block text-gray-700">Categoría</label>
-          <input type="text" formControlName="nombre_categoria" id="nombre_categoria" name="nombre_categoria" required
+          <label for="nombre_empaque" class="block text-gray-700">Unidad Empaque</label>
+          <input type="text" formControlName="nombre_empaque" id="nombre_empaque" name="nombre_empaque" required
             class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
   
-            <div class="text-red-500" *ngIf="categoriaForm.controls['nombre_categoria'].touched && categoriaForm.controls['nombre_categoria'].invalid">
+            <div class="text-red-500" *ngIf="unidadEmpaqueForm.controls['nombre_empaque'].touched && unidadEmpaqueForm.controls['nombre_empaque'].invalid">
               <span>Dato Requerido</span>
             </div>
   
         </div> 
-
         <div>
-            <label for="descripcion_categoria" class="block text-gray-700">Descripción</label>
+          <label for="descripcion_empaque" class="block text-gray-700">Descripción</label>
             <textarea
-              formControlName="descripcion_categoria"
-              id="descripcion_categoria"
-              name="descripcion_categoria"
-              required
-              rows="3"
-              class="w-full rounded-md border border-gray-300 bg-white p-2 text-base font-medium text-gray-600 outline-none resize-y focus:border-blue-500 focus:shadow-md"
-            ></textarea>
-          
-            <div class="text-red-500" *ngIf="categoriaForm.controls['descripcion_categoria'].touched && categoriaForm.controls['descripcion_categoria'].invalid">
+            formControlName="descripcion_empaque"
+            id="descripcion_empaque"
+            name="descripcion_empaque"
+            required
+            rows="3"
+            class="w-full rounded-md border border-gray-300 bg-white p-2 text-base font-medium text-gray-600 outline-none resize-y focus:border-blue-500 focus:shadow-md"
+          ></textarea>
+            <div class="text-red-500" *ngIf="unidadEmpaqueForm.controls['descripcion_empaque'].touched && unidadEmpaqueForm.controls['descripcion_empaque'].invalid">
               <span>Dato Requerido</span>
             </div>
-          </div>
+        </div> 
        
         <div>
             <label for="estatus" class="block text-gray-700">Estatus</label>
             <input type="checkbox" formControlName="estatus" id="estatus" name="estatus" class="mr-3">
-            <span>{{ categoriaForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
+            <span>{{ unidadEmpaqueForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
         </div>
      
         <div class="text-center ">
@@ -98,10 +98,10 @@
             <button 
             *ngIf="!isEditMode" 
             type="button" 
-            [disabled]="categoriaForm.invalid"
+            [disabled]="unidadEmpaqueForm.invalid"
             [ngClass]="{
-              'bg-blue-300 cursor-not-allowed': categoriaForm.invalid, 
-              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !categoriaForm.invalid
+              'bg-blue-300 cursor-not-allowed': unidadEmpaqueForm.invalid, 
+              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !unidadEmpaqueForm.invalid
             }"
             class="text-white font-medium rounded-lg text-sm px-5 py-2.5"
             (click)="onSave()"

@@ -68,8 +68,14 @@
       </div> 
       <div>
         <label for="descripcion" class="block text-gray-700">Descripción</label>
-        <input type="text" formControlName="descripcion" id="descripcion" name="descripcion" required
-          class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
+          <textarea
+          formControlName="descripcion"
+          id="descripcion"
+          name="descripcion"
+          required
+          rows="3"
+          class="w-full rounded-md border border-gray-300 bg-white p-2 text-base font-medium text-gray-600 outline-none resize-y focus:border-blue-500 focus:shadow-md"
+        ></textarea>
 
           <div class="text-red-500" *ngIf="unidadMedidaForm.controls['descripcion'].touched && unidadMedidaForm.controls['descripcion'].invalid">
             <span>Dato Requerido</span>

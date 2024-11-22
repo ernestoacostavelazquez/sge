@@ -23,14 +23,9 @@ export class SidebarComponent {
   }
 
   open:boolean = false;
-  submenus: { [key: string]: boolean } = {}; // Estado de submenús
 
   toggleMenu(){
     this.open = !this.open
-  }
-
-  toggleSubmenu(key: string) {
-    this.submenus[key] = !this.submenus[key];
   }
 
 
