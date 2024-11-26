@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-tipos-poliza',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './tipos-poliza.component.html',
-  styleUrl: './tipos-poliza.component.css'
+    selector: 'app-tipos-poliza',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './tipos-poliza.component.html',
+    styleUrl: './tipos-poliza.component.css'
 })
 export class TiposPolizaComponent implements OnInit{
 

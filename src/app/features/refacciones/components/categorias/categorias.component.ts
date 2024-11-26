@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-categorias',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './categorias.component.html',
-  styleUrl: './categorias.component.css'
+    selector: 'app-categorias',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './categorias.component.html',
+    styleUrl: './categorias.component.css'
 })
 export class CategoriasComponent implements OnInit{
 

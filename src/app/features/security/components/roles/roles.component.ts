@@ -5,11 +5,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-roles',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './roles.component.html',
-  styleUrl: './roles.component.css'
+    selector: 'app-roles',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './roles.component.html',
+    styleUrl: './roles.component.css'
 })
 export class RolesComponent  implements OnInit{
 

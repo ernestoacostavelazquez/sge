@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-estado-civil',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './estado-civil.component.html',
-  styleUrl: './estado-civil.component.css'
+    selector: 'app-estado-civil',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './estado-civil.component.html',
+    styleUrl: './estado-civil.component.css'
 })
 export class EstadoCivilComponent implements OnInit{
  

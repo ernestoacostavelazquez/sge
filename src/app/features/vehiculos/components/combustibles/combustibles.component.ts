@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-combustibles',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './combustibles.component.html',
-  styleUrl: './combustibles.component.css'
+    selector: 'app-combustibles',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './combustibles.component.html',
+    styleUrl: './combustibles.component.css'
 })
 export class CombustiblesComponent {
   combustiblesArray: any[] = [];

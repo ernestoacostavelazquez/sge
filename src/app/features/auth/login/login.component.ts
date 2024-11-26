@@ -7,11 +7,10 @@ import { NgIf } from '@angular/common';
 import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, HttpClientModule,ReactiveFormsModule,NgIf], // Eliminar la coma extra
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] // Cambiado de styleUrl a styleUrls
+    selector: 'app-login',
+    imports: [FormsModule, HttpClientModule, ReactiveFormsModule, NgIf], // Eliminar la coma extra
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'] // Cambiado de styleUrl a styleUrls
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({}); // Definir el FormGroup para el formulario

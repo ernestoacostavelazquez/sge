@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-grupos-cuentas',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './grupos-cuentas.component.html',
-  styleUrl: './grupos-cuentas.component.css'
+    selector: 'app-grupos-cuentas',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './grupos-cuentas.component.html',
+    styleUrl: './grupos-cuentas.component.css'
 })
 export class GruposCuentasComponent {
 

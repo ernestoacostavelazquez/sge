@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-unidades-empaque',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './unidades-empaque.component.html',
-  styleUrl: './unidades-empaque.component.css'
+    selector: 'app-unidades-empaque',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './unidades-empaque.component.html',
+    styleUrl: './unidades-empaque.component.css'
 })
 export class UnidadesEmpaqueComponent {
   

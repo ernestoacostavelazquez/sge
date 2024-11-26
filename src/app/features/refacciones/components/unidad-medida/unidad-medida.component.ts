@@ -6,11 +6,10 @@ import { AlertService } from '../../../../shared/services/alert.service';
 
 
 @Component({
-  selector: 'app-unidad-medida',
-  standalone: true,
-  imports:[ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './unidad-medida.component.html',
-  styleUrls: ['./unidad-medida.component.css']
+    selector: 'app-unidad-medida',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './unidad-medida.component.html',
+    styleUrls: ['./unidad-medida.component.css']
 })
 export class UnidadMedidaComponent  implements OnInit  {
 

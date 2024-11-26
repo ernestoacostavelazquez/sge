@@ -5,11 +5,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-almacenes',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './almacenes.component.html',
-  styleUrl: './almacenes.component.css'
+    selector: 'app-almacenes',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './almacenes.component.html',
+    styleUrl: './almacenes.component.css'
 })
 export class AlmacenesComponent implements OnInit {
  

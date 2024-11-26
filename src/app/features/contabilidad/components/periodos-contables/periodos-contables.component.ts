@@ -6,11 +6,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-periodos-contables',
-  standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
-  templateUrl: './periodos-contables.component.html',
-  styleUrl: './periodos-contables.component.css'
+    selector: 'app-periodos-contables',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './periodos-contables.component.html',
+    styleUrl: './periodos-contables.component.css'
 })
 export class PeriodosContablesComponent {
   

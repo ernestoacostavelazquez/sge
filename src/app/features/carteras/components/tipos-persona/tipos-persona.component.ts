@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-tipos-persona',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './tipos-persona.component.html',
-  styleUrl: './tipos-persona.component.css'
+    selector: 'app-tipos-persona',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './tipos-persona.component.html',
+    styleUrl: './tipos-persona.component.css'
 })
 export class TiposPersonaComponent implements OnInit {
   tiposPersonaArray: any[] = [];

@@ -8,11 +8,10 @@ import { AlertService } from '../../../../shared/services/alert.service';
 
 
 @Component({
-  selector: 'app-lineas',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './lineas.component.html',
-  styleUrl: './lineas.component.css'
+    selector: 'app-lineas',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './lineas.component.html',
+    styleUrl: './lineas.component.css'
 })
 
 

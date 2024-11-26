@@ -8,11 +8,10 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-catalogo-cuentas',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './catalogo-cuentas.component.html',
-  styleUrl: './catalogo-cuentas.component.css'
+    selector: 'app-catalogo-cuentas',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './catalogo-cuentas.component.html',
+    styleUrl: './catalogo-cuentas.component.css'
 })
 export class CatalogoCuentasComponent {
 

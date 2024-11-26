@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-canales-venta',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './canales-venta.component.html',
-  styleUrl: './canales-venta.component.css'
+    selector: 'app-canales-venta',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './canales-venta.component.html',
+    styleUrl: './canales-venta.component.css'
 })
 export class CanalesVentaComponent {
 

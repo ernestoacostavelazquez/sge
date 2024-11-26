@@ -5,11 +5,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
-  selector: 'app-tipos-cajas',
-  standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule,JsonPipe,NgFor,NgIf, CommonModule],
-  templateUrl: './tipos-cajas.component.html',
-  styleUrl: './tipos-cajas.component.css'
+    selector: 'app-tipos-cajas',
+    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    templateUrl: './tipos-cajas.component.html',
+    styleUrl: './tipos-cajas.component.css'
 })
 export class TiposCajasComponent {
   tiposCajaArray: any[] = [];
