@@ -1,15 +1,13 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { AlertService } from '../../../../shared/services/alert.service';
-
-
 
 
 @Component({
     selector: 'app-lineas',
-    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    imports: [ReactiveFormsModule, HttpClientModule, NgFor, NgIf, CommonModule],
     templateUrl: './lineas.component.html',
     styleUrl: './lineas.component.css'
 })

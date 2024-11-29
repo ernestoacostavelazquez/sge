@@ -6,7 +6,7 @@ import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
     selector: 'app-almacenes',
-    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    imports: [ReactiveFormsModule, HttpClientModule, NgFor, NgIf, CommonModule],
     templateUrl: './almacenes.component.html',
     styleUrl: './almacenes.component.css'
 })

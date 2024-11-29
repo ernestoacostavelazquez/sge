@@ -35,6 +35,7 @@ import { TiposCajasComponent } from './features/tesoreria/components/tipos-cajas
 import { CanalesVentaComponent } from './features/refacciones/components/canales-venta/canales-venta.component';
 import { SubCategoriasComponent } from './features/refacciones/components/sub-categorias/sub-categorias.component';
 import { UnidadesEmpaqueComponent } from './features/refacciones/components/unidades-empaque/unidades-empaque.component';
+import { FamiliasComponent } from './features/vehiculos/components/familias/familias.component';
 
 export const routes: Routes = [
     
@@ -248,6 +249,12 @@ export const routes: Routes = [
         {
             path:'add-subCategorias', 
             component:SubCategoriasComponent,
+            canActivate:[authGuard]
+            //component: SidebarComponent  
+        },
+        {
+            path:'add-familias', 
+            component: FamiliasComponent,
             canActivate:[authGuard]
             //component: SidebarComponent  
         }

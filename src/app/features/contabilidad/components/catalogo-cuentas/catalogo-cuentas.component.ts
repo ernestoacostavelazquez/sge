@@ -1,5 +1,5 @@
 // catalogo-cuentas.component.ts
-import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-catalogo-cuentas',
-    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    imports: [ReactiveFormsModule, HttpClientModule, NgFor, NgIf, CommonModule],
     templateUrl: './catalogo-cuentas.component.html',
     styleUrl: './catalogo-cuentas.component.css'
 })

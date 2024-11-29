@@ -1,4 +1,4 @@
-import { CommonModule, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -7,7 +7,7 @@ import { AlertService } from '../../../../shared/services/alert.service';
 
 @Component({
     selector: 'app-unidad-medida',
-    imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, NgFor, NgIf, CommonModule],
+    imports: [ReactiveFormsModule, HttpClientModule,  NgFor, NgIf, CommonModule],
     templateUrl: './unidad-medida.component.html',
     styleUrls: ['./unidad-medida.component.css']
 })

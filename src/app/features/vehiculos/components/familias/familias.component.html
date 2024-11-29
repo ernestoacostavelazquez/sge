@@ -2,7 +2,7 @@
     <!-- Contenido de la columna más grande -->
     <div class="col-span-12 md:col-span-8 "> 
       <section class=" bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4">Tabla de Modelos</h2>
+        <h2 class="text-2xl font-semibold mb-4">Tabla de Familias</h2>
   
        
   
@@ -10,20 +10,20 @@
           <thead>
             <tr> 
                 <th class="py-2 px-4  bg-gray-300 text-left">#</th>
-                <th class="py-2 px-4  bg-gray-300 text-left">Modelo</th>
-                <th class="py-2 px-4  bg-gray-300 text-left">Familia</th>     
+                <th class="py-2 px-4  bg-gray-300 text-left">Familia</th>
+                <th class="py-2 px-4  bg-gray-300 text-left">Marca</th>     
                 <th class="py-2 px-4  bg-gray-300 text-left">Estatus</th>
                 <th class="py-2 px-4  bg-gray-300 text-center">Acciones</th>              
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let modelo of modelosArray; let i = index">
+            <tr *ngFor="let familia of familiasArray; let i = index">
                 <td class="py-2 px-4 border-b border-gray-300">{{i +  1}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{modelo.nombre_modelo}}</td>
-                <td class="py-2 px-4 border-b border-gray-300">{{modelo.familia?.nombre_familia || 'Sin Género' }}</td> <!-- Mostrar nombre del género -->
-                <td class="py-2 px-4 border-b border-gray-300">{{modelo.estatus ? 'Activo' : 'Inactivo'}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{familia.nombre_familia}}</td>
+                <td class="py-2 px-4 border-b border-gray-300">{{ familia.marca?.nombre_marca || 'Sin Género' }}</td> <!-- Mostrar nombre del género -->
+                <td class="py-2 px-4 border-b border-gray-300">{{familia.estatus ? 'Activo' : 'Inactivo'}}</td>
                 <td class="py-2 px-4 border-b border-gray-300 text-center"> 
-                <button class="mr-4 " title="Editar" (click)="onEdit(modelo)">
+                <button class="mr-4 " title="Editar" (click)="onEdit(familia)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-blue-500 hover:fill-blue-700"
                     viewBox="0 0 348.882 348.882">
                     <path
@@ -34,7 +34,7 @@
                       data-original="#000000" />
                   </svg>
                 </button>
-                <button class="mr-4" title="Eliminar" (click)="onDelete(modelo.id_modelo || modelo.id)">
+                <button class="mr-4" title="Eliminar" (click)="onDelete(familia.id_familia || familia.id)">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-red-500 hover:fill-red-700" viewBox="0 0 24 24">
                     <path
                       d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
@@ -54,20 +54,20 @@
     <!-- Contenido de la columna más pequeña -->
     <div class="col-span-12 md:col-span-4 ">
       <section class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Modelos</h2>
-      <form id="registro-form" class="space-y-4" [formGroup]="modeloForm">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Registro Familias</h2>
+      <form id="registro-form" class="space-y-4" [formGroup]="familiaForm">
         
         <div>
-            <label for="id_familia" class="block text-gray-700">Familia</label>
-            <select formControlName="id_familia" id="id_familia" class="w-full rounded-md border border-gray-300 p-2">
-                <option value="" disabled selected>Seleccione un modelo</option>
-                <option *ngFor="let familia of familiasArray" [value]="familia.id_familia">
-                    {{ familia.nombre_familia }}
+            <label for="id_marca" class="block text-gray-700">Marcas</label>
+            <select formControlName="id_marca" id="id_marca" class="w-full rounded-md border border-gray-300 p-2">
+                <option value="" disabled selected>Seleccione una marca</option>
+                <option *ngFor="let marca of marcasArray" [value]="marca.id_marca">
+                    {{ marca.nombre_marca }}
                 </option>
             </select>
         
             <!-- Mostrar error si el campo es inválido y ha sido modificado por el usuario -->
-            <div class="text-red-500" *ngIf="modeloForm.controls['id_familia'].invalid && modeloForm.controls['id_familia'].dirty">
+            <div class="text-red-500" *ngIf="familiaForm.controls['id_marca'].invalid && familiaForm.controls['id_marca'].dirty">
                 <span>Debe seleccionar una armadora antes de guardar</span>
             </div>
         </div>
@@ -76,28 +76,28 @@
 
 
         <div>
-          <label for="nombre_modelo" class="block text-gray-700">Modelo</label>
-          <input type="text" formControlName="nombre_modelo" id="nombre_modelo" name="nombre_modelo" required
+          <label for="nombre_familia" class="block text-gray-700">Familia</label>
+          <input type="text" formControlName="nombre_familia" id="nombre_familia" name="nombre_familia" required
             class="w-full rounded-md border border-gray-300 bg-white p-1.5 text-base font-medium text-gray-600 outline-none focus:border-blue-500 focus:shadow-md">
   
-            <div class="text-red-500" *ngIf="modeloForm.controls['nombre_modelo'].touched && modeloForm.controls['nombre_modelo'].invalid">
+            <div class="text-red-500" *ngIf="familiaForm.controls['nombre_familia'].touched && familiaForm.controls['nombre_familia'].invalid">
               <span>Dato Requerido</span>
             </div>
   
         </div> 
         
           <div>
-            <label for="descripcion_modelo" class="block text-gray-700">Descripcion</label>
+            <label for="descripcion_familia" class="block text-gray-700">Descripcion</label>
             <textarea
-              formControlName="descripcion_modelo"
-              id="descripcion_modelo"
-              name="descripcion_modelo"
+              formControlName="descripcion_familia"
+              id="descripcion_familia"
+              name="descripcion_familia"
               required
               rows="3"
               class="w-full rounded-md border border-gray-300 bg-white p-2 text-base font-medium text-gray-600 outline-none resize-y focus:border-blue-500 focus:shadow-md"
             ></textarea>
           
-            <div class="text-red-500" *ngIf="modeloForm.controls['descripcion_modelo'].touched && modeloForm.controls['descripcion_modelo'].invalid">
+            <div class="text-red-500" *ngIf="familiaForm.controls['descripcion_familia'].touched && familiaForm.controls['descripcion_familia'].invalid">
               <span>Dato Requerido</span>
             </div>
           </div>
@@ -105,7 +105,7 @@
         <div>
             <label for="estatus" class="block text-gray-700">Estatus</label>
             <input type="checkbox" formControlName="estatus" id="estatus" name="estatus" class="mr-3">
-            <span>{{ modeloForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
+            <span>{{ familiaForm.controls['estatus'].value ? 'Activo' : 'Inactivo' }}</span>
         </div>
      
         <div class="text-center ">
@@ -119,10 +119,10 @@
             <button 
             *ngIf="!isEditMode" 
             type="button" 
-            [disabled]="modeloForm.invalid"
+            [disabled]="familiaForm.invalid"
             [ngClass]="{
-              'bg-blue-300 cursor-not-allowed': modeloForm.invalid, 
-              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !modeloForm.invalid
+              'bg-blue-300 cursor-not-allowed': familiaForm.invalid, 
+              'bg-blue-700 hover:bg-blue-800 cursor-pointer': !familiaForm.invalid
             }"
             class="text-white font-medium rounded-lg text-sm px-5 py-2.5"
             (click)="onSave()"
@@ -145,4 +145,3 @@
   
   
   
-
