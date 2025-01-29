@@ -6,6 +6,8 @@
 
 body {
     font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto globalmente */
+    font-size: 0.875rem; /* Equivalente a text-sm en Tailwind CSS */
+    line-height: 1.25rem; /* Asegura una altura de línea adecuada */
   }
 
 /* alert.component.css */
